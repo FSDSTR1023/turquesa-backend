@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 
 const usuario = new Schema({
     id_plantilla: String,
-    fecha: String,
-    confirmacion: Boolean,
+    nombre: String,
+    confirmacion: Boolean
 });
 
 module.exports = mongoose.model("Usuario", usuario);
