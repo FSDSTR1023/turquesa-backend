@@ -3,7 +3,7 @@ const express = require('express');
 var path = require('path');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var usersRouter = require('./routes/usuario');
 
 const app = express();
 const port = 3000;
