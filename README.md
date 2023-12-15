@@ -3,4 +3,4 @@
 ## Inicio rápido
 
 - npm install
-- npm run dev
+- npm app.js
