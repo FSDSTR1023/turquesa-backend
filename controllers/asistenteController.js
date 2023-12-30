@@ -16,7 +16,7 @@ async function updateAsistente(req,res) {
     const asistenteAActualizar = req.body;
     Asistente.findByIdAndUpdate(req.params.id, {$set: asistenteAActualizar})
         .then(asistente => {
-            console.log('asistente actualizado: ', asistente)
+            console.log('Asistente actualizado: ', asistente)
             res.status(200).json(asistente)
         })
         .catch(err => {
@@ -42,7 +42,7 @@ async function crearAsistente(req, res) {
 async function borrarAsistente(req,res) {
     Asistente.findByIdAndDelete(req.params.id)
         .then(asistente => {
-            console.log('Asistente borrada: ', asistente)
+            console.log('Asistente borrado: ', asistente)
             res.status(200).json(asistente)
         })
         .catch(err => {

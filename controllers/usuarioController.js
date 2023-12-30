@@ -30,7 +30,7 @@ async function crearUsuario(req, res) {
     usuario.id = Math.random().toString(36);
     Usuario.create(usuario)
     .then(usuario => {
-        console.log(`Usuario creada: ${usuario}`)
+        console.log(`Usuario creado: ${usuario}`)
         res.status(200).json(usuario)
     })
     .catch(err => {
