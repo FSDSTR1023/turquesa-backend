@@ -1,4 +1,4 @@
-const Usuario = require('../models/usuario.model');
+const Usuario = require('../models/usuario.model.jsx');
 
 async function getUsuarios(req,res) {
     Usuario.find()
