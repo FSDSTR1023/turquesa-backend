@@ -30,7 +30,7 @@ async function login(req,res) {
     const pass= req.body.password;
     Usuario.find({
         email: {$eq: user},
-        password: {$eq: pass},
+        contraseña: {$eq: pass},
     })
         .then(usuario => {
             console.log('Usuario encontrado: ', usuario)
