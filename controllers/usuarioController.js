@@ -27,7 +27,7 @@ async function updateUsuario(req,res) {
 
 async function login(req,res) {
     const user= req.body.email;
-    const pass= req.body.password;
+    const pass= req.body.contraseña;
     Usuario.find({
         email: {$eq: user},
         contraseña: {$eq: pass},
