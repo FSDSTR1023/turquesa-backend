@@ -25,7 +25,24 @@ async function updateUsuario(req,res) {
         });
 }
 
-async function crearUsuario(req, res) {
+async function login(req,res) {
+    const user= req.body.email;
+    const pass= req.body.password;
+    Usuario.find({
+        email: {$eq: user},
+        password: {$eq: pass},
+    })
+        .then(usuario => {
+            console.log('Usuario encontrado: ', usuario)
+            res.status(200).json(usuario)
+        })
+        .catch(err => {
+            console.log('Error al recuperar el usuario: ', err)
+            res.status(400).json(err)
+        });
+}
+
+async function register(req, res) {
     const usuario= req.body;
     usuario.id = Math.random().toString(36);
     Usuario.create(usuario)
@@ -51,9 +68,51 @@ async function borrarUsuario(req,res) {
         });
 }
 
+// app.post("/api/login", (req, res) => {
+//   const { username, password } = req.body;
+
+//   const user = users.find(
+//     (user) => user.username === username && user.password === password
+//   );
+//   if (!user) {
+//     res.status(401).send({ error: "User not found" });
+//     return;
+//   }
+
+//   jwt.sign(
+//     { id: user.id, username: user.username },
+//     process.env.JWT_SECRET,
+//     (err, token) => {
+//       if (err) {
+//         res.status(401).send({ error: err.message });
+//       } else {
+//         res
+//           .cookie("token", token, {
+//             httpOnly: true,
+//             secure: false,
+//             expires: new Date("2100-12-17T03:24:00"),
+//           })
+//           .status(201)
+//           .send();
+//         //res.status(201).send({ token });
+//       }
+//     }
+//   );
+// });
+
+// app.post("/api/logout", (_req, res) => {
+//   res.clearCookie("token").send();
+// });
+
+// app.get("/api/profile", authMiddleware, (req, res) => {
+//   const user = users.find((user) => user.id === req.user.id);
+//   res.json({ ...user, password: undefined });
+// });
+
 module.exports = {
     getUsuarios,
     updateUsuario,
-    crearUsuario,
+    login,
+    register,
     borrarUsuario
 }
