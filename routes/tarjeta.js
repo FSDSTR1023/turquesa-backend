@@ -1,9 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+const controladorTarjetas = require('../controllers/tarjetaController');
+
+router.get('/', controladorTarjetas.getTarjetas);
+
+router.put('/:id', controladorTarjetas.updateTarjeta);
+
+router.post('/', controladorTarjetas.crearTarjeta);
+
+router.delete('/:id', controladorTarjetas.borrarTarjeta);
 
 module.exports = router;

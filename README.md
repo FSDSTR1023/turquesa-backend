@@ -112,8 +112,8 @@ Por favor lee [CONTRIBUTING.md](URL) para detalles sobre nuestro código de cond
 ## Autores
 
 - Carmen Plaza Romero- [https://github.com/carmenplazaromero](https://github.com/carmenplazaromero)
-- Juan Mencía - https://github.com/juanmm99
-- Massimiliano Marinucci - https://github.com/m-marinucci
+- Juan Mencía - [https://github.com/juanmm99] (https://github.com/juanmm99)
+- Massimiliano Marinucci - [https://github.com/m-marinucci] (https://github.com/m-marinucci)
 
 ## Licencia
 

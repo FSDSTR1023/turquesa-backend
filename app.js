@@ -1,9 +1,8 @@
-var createError = require('http-errors');
 const express = require('express');
 var path = require('path');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/usuario');
+var usersRouter = require('./routes/usuario.js');
 
 const app = express();
 const port = 3000;
