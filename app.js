@@ -3,15 +3,22 @@ var path = require('path');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/usuario.js');
+var tarjetasRouter = require('./routes/tarjeta.js');
 
 const app = express();
 const port = 3000;
+const cors = require('cors');
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true,
+}));
 
 require('dotenv').config();
 app.use(express.json());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/tarjeta', tarjetasRouter);
 
 const mongoose = require("mongoose");
 const mongoDB = "mongodb+srv://"+process.env.DB_USER+":"+process.env.DB_PASSWORD+"@"+process.env.DB_SERVER+"/"+process.env.DB_NAME+"?retryWrites=true&w=majority";
@@ -33,7 +40,6 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
 });
 
 app.listen(port, () => {

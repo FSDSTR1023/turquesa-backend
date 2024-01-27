@@ -1,4 +1,4 @@
-const Tarjeta = require('../models/task.model');
+const Tarjeta = require('../models/tarjeta.model.jsx');
 
 async function getTarjetas(req,res) {
     Tarjeta.find()
