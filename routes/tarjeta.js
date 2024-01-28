@@ -3,7 +3,9 @@ var router = express.Router();
 
 const controladorTarjetas = require('../controllers/tarjetaController');
 
-router.get('/', controladorTarjetas.getTarjetas);
+router.get('/', controladorTarjetas.getTarjetasMuestra);
+
+router.get('/:id', controladorTarjetas.getTarjeta);
 
 router.put('/:id', controladorTarjetas.updateTarjeta);
 

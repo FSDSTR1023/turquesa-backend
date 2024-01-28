@@ -12,6 +12,32 @@ async function getTarjetas(req,res) {
         });
 }
 
+async function getTarjetasMuestra(req,res) {
+    Tarjeta.find({
+        id_usuario: {$eq: null}
+    })
+        .then(tarjetas => {
+            console.log('Tarjetas encontradas: ', tarjetas)
+            res.status(200).json(tarjetas)
+        })
+        .catch(err => {
+            console.log('Error al recuperar las tarjetas: ', err)
+            res.status(400).json(err)
+        });
+}
+
+async function getTarjeta(req,res) {
+    Tarjeta.find(req.params.id)
+        .then(tarjeta => {
+            console.log('Tarjeta encontrada: ', tarjeta)
+            res.status(200).json(tarjeta)
+        })
+        .catch(err => {
+            console.log('Error al recuperar la tarjeta: ', err)
+            res.status(400).json(err)
+        });
+}
+
 async function updateTarjeta(req,res) {
     const tarjetaAActualizar = req.body;
     Tarjeta.findByIdAndUpdate(req.params.id, {$set: tarjetaAActualizar})
@@ -53,6 +79,8 @@ async function borrarTarjeta(req,res) {
 
 module.exports = {
     getTarjetas,
+    getTarjetasMuestra,
+    getTarjeta,
     updateTarjeta,
     crearTarjeta,
     borrarTarjeta
