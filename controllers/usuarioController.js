@@ -26,15 +26,19 @@ async function updateUsuario(req,res) {
 }
 
 async function login(req,res) {
-    const user= req.body.email;
-    const pass= req.body.contraseña;
-    Usuario.find({
+    const user= req.query.email;
+    const pass= req.query.contraseña;
+    Usuario.findOne({
         email: {$eq: user},
         contraseña: {$eq: pass},
     })
         .then(usuario => {
-            console.log('Usuario encontrado: ', usuario)
-            res.status(200).json(usuario)
+            if (!usuario) {
+                res.status(203).json("No se ha encontrado al usuario");
+            } else {
+                console.log('Usuario encontrado: ', usuario)
+                res.status(200).json(usuario)
+            }
         })
         .catch(err => {
             console.log('Error al recuperar el usuario: ', err)
