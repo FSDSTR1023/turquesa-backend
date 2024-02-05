@@ -47,10 +47,7 @@ async function login(req,res) {
 }
 
 async function register(req, res) {
-    const usuario = {
-        email: req.query.email,
-        contraseña: req.query.contraseña
-    }
+    const usuario = req.body;
     usuario.id = Math.random().toString(36);
     Usuario.create(usuario)
     .then(usuario => {
