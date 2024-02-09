@@ -1,9 +1,11 @@
+// models/asistente.model.jsx
+
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
 const usuario = new Schema({
-    id_plantilla: String,
+    id_tarjeta: String,
     nombre: String,
     confirmacion: String, //S (Confirma), N (No confirma), E (Espera respuesta)
     email: String

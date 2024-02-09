@@ -1,3 +1,5 @@
+/controllers/asistenteController.js
+
 const Asistente = require('../models/asistente.model');
 
 async function getAsistentes(req,res) {

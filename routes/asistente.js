@@ -1,8 +1,20 @@
+// routes/asistente.js
+
+
 var express = require('express');
 var router = express.Router();
+const asistenteController = require('../controllers/asistenteController');
 
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+// Route to get all asistentes
+router.get('/', asistenteController.getAsistentes);
+
+// Route to create a new asistente
+router.post('/create', asistenteController.crearAsistente);
+
+// Route to update an asistente by ID
+router.put('/update/:id', asistenteController.updateAsistente);
+
+// Route to delete an asistente by ID
+router.delete('/delete/:id', asistenteController.borrarAsistente);
 
 module.exports = router;
