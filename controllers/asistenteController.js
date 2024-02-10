@@ -1,16 +1,19 @@
+// /controllers/asistenteController.js
+
 const Asistente = require('../models/asistente.model');
 
 async function getAsistentes(req,res) {
     Asistente.find()
-        .then(tarjetas => {
-            console.log('Asistentes encontrados: ', tarjetas)
-            res.status(200).json(tarjetas)
+        .then(asistentes => { // Changed to 'asistentes' for clarity and to match the variable used below
+            console.log('Asistentes encontrados: ', asistentes);
+            res.status(200).json(asistentes); // Changed to 'asistentes' to match the resolved promise variable
         })
         .catch(err => {
-            console.log('Error al recuperar los asistentes: ', err)
-            res.status(400).json(err)
+            console.log('Error al recuperar los asistentes: ', err);
+            res.status(400).json(err);
         });
 }
+
 
 async function updateAsistente(req,res) {
     const asistenteAActualizar = req.body;
@@ -27,7 +30,6 @@ async function updateAsistente(req,res) {
 
 async function crearAsistente(req, res) {
     const asistente= req.body;
-    asistente.id = Math.random().toString(36);
     Asistente.create(asistente)
     .then(asistente => {
         console.log(`Asistente creado: ${asistente}`)
