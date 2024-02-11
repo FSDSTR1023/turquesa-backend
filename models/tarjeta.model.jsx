@@ -1,3 +1,6 @@
+// .models/tarjeta.model.jsx
+
+const { url } = require('inspector');
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;

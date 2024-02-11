@@ -1,3 +1,4 @@
+// controllers/tarjetaController.js
 const Tarjeta = require('../models/tarjeta.model.jsx');
 
 async function getTarjetas(req,res) {
@@ -77,11 +78,44 @@ async function borrarTarjeta(req,res) {
         });
 }
 
+//  Function that fetches only the tarjetas associated with the logged-in user ID
+
+
+async function getTarjetasPorUsuario(req, res) {
+    const userId = req.params.userId; // Assumes you pass the user ID as a parameter
+
+    Tarjeta.find({ id_usuario: userId })
+        .then(tarjetas => {
+            console.log('Tarjetas del usuario encontradas: ', tarjetas);
+            res.status(200).json(tarjetas);
+        })
+        .catch(err => {
+            console.error('Error al recuperar las tarjetas del usuario: ', err);
+            res.status(400).json(err);
+        });
+}
+
+
+// New function to get all tarjetas
+async function getAllTarjetas(req, res) {
+    try {
+        const tarjetas = await Tarjeta.find({});
+        console.log('All tarjetas found:', tarjetas);
+        res.status(200).json(tarjetas);
+    } catch (err) {
+        console.error('Error retrieving all tarjetas:', err);
+        res.status(400).json({ error: err.message });
+    }
+}
+
+
 module.exports = {
     getTarjetas,
     getTarjetasMuestra,
     getTarjeta,
     updateTarjeta,
     crearTarjeta,
-    borrarTarjeta
-}
+    borrarTarjeta,
+    getTarjetasPorUsuario, 
+    getAllTarjetas
+};
