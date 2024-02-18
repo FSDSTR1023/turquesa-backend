@@ -97,7 +97,7 @@ async function getTarjetasPorUsuario(req, res) {
 
 
 // New function to get all tarjetas
-async function getAllTarjetas(req, res) {
+async function getAllTarjetas(_req, res) {
     try {
         const tarjetas = await Tarjeta.find({});
         console.log('All tarjetas found:', tarjetas);
@@ -106,6 +106,23 @@ async function getAllTarjetas(req, res) {
         console.error('Error retrieving all tarjetas:', err);
         res.status(400).json({ error: err.message });
     }
+}
+
+async function generarTarjetaParaUsuario(req, res) {
+    const tarjeta = req.body.tarjeta;
+    const usuario = req.body.usuario;
+    console.log("Tarjeta que intenta crear: ", tarjeta)
+    tarjeta._id = null;
+    tarjeta.id_usuario = usuario;
+    Tarjeta.create(tarjeta)
+        .then(tarjeta => {
+            console.log(`Tarjeta creada: ${tarjeta}`)
+            res.status(200).json(tarjeta)
+        })
+        .catch(err => {
+            console.log('Error al crear la tarjeta: ', err)
+            res.status(400).json(err)
+        });
 }
 
 
@@ -117,5 +134,6 @@ module.exports = {
     crearTarjeta,
     borrarTarjeta,
     getTarjetasPorUsuario, 
-    getAllTarjetas
+    getAllTarjetas, 
+    generarTarjetaParaUsuario
 };
