@@ -8,10 +8,12 @@ const controladorTarjetas = require('../controllers/tarjetaController');
 // General routes
 router.get('/', controladorTarjetas.getTarjetasMuestra);
 router.post('/', controladorTarjetas.crearTarjeta);
+router.put('/', controladorTarjetas.updateTarjeta);
 
 // Specific routes
 router.get('/all', controladorTarjetas.getAllTarjetas);
-router.get('/usuario/:userId', controladorTarjetas.getTarjetasPorUsuario);
+router.get('/dame/tarjetas', controladorTarjetas.dameLasTarjetasDeUnaVez);
+router.get('/usuario/all', controladorTarjetas.getTarjetasPorUsuario);
 
 router.post('/usuario/crear', controladorTarjetas.generarTarjetaParaUsuario);
 
