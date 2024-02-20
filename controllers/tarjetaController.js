@@ -81,21 +81,21 @@ async function borrarTarjeta(req,res) {
 //  Function that fetches only the tarjetas associated with the logged-in user ID
 
 
-async function getTarjetasPorUsuario(_req, res) {
-    // const userId = req.query.user; // Assumes you pass the user ID as a parameter
-    // console.log("Query usuario: ", req.query);
-    // Tarjeta.findOne({ id_usuario: {$eq: userId} })
-    //     .then(tarjetas => {
-    //         console.log('Tarjetas del usuario encontradas: ', tarjetas);
-    //         res.status(200).json(tarjetas);
-    //     })
-    //     .catch(err => {
-    //         console.error('Error al recuperar las tarjetas del usuario: ', err);
-    //         res.status(400).json(err);
-    //     });
-    console.log("Funciona!");
-    res.status(200).send("Hola");
-}
+async function getTarjetasPorUsuario(req, res) {
+    const userId = req.body.user; // Assumes you pass the user ID as a parameter
+    console.log("userId: ", userId);
+    Tarjeta.findOne({ id_usuario: {$eq: userId} })
+        .then(tarjetas => {
+            console.log('Tarjetas del usuario encontradas: ', tarjetas);
+            res.status(200).json(tarjetas);
+        })
+        .catch(err => {
+            console.error('Error al recuperar las tarjetas del usuario: ', err);
+            res.status(400).json(err);
+        });
+    // console.log("Funciona!");
+    // res.status(200).send("Hola");
+} 
 
 
 // New function to get all tarjetas
@@ -127,20 +127,6 @@ async function generarTarjetaParaUsuario(req, res) {
         });
 }
 
-async function dameLasTarjetasDeUnaVez(req, res) {
-    console.log("Entrar, entra");
-    Tarjeta.find({
-        id_usuario: {$eq: null}
-    })
-        .then(tarjetas => {
-            console.log('Tarjetas encontradas: ', tarjetas)
-            res.status(200).json(tarjetas)
-        })
-        .catch(err => {
-            console.log('Error al recuperar las tarjetas: ', err)
-            res.status(400).json(err)
-        });
-}
 
 
 module.exports = {
@@ -152,6 +138,5 @@ module.exports = {
     borrarTarjeta,
     getTarjetasPorUsuario, 
     getAllTarjetas, 
-    generarTarjetaParaUsuario,
-    dameLasTarjetasDeUnaVez
+    generarTarjetaParaUsuario
 };

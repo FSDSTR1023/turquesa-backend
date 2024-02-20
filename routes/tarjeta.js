@@ -12,14 +12,13 @@ router.put('/', controladorTarjetas.updateTarjeta);
 
 // Specific routes
 router.get('/all', controladorTarjetas.getAllTarjetas);
-router.get('/dame/tarjetas', controladorTarjetas.dameLasTarjetasDeUnaVez);
-router.get('/usuario/all', controladorTarjetas.getTarjetasPorUsuario);
+router.post('/usuario/all', controladorTarjetas.getTarjetasPorUsuario);
 
 router.post('/usuario/crear', controladorTarjetas.generarTarjetaParaUsuario);
 
-// ID-specific routes
-router.get('/:id', controladorTarjetas.getTarjeta);
-router.put('/:id', controladorTarjetas.updateTarjeta);
-router.delete('/:id', controladorTarjetas.borrarTarjeta);
+// // ID-specific routes
+// router.get('/:id', controladorTarjetas.getTarjeta);
+// router.put('/:id', controladorTarjetas.updateTarjeta);
+// router.delete('/:id', controladorTarjetas.borrarTarjeta);
 
 module.exports = router;
