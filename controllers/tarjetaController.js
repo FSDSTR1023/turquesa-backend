@@ -40,8 +40,8 @@ async function getTarjeta(req,res) {
 }
 
 async function updateTarjeta(req,res) {
-    const tarjetaAActualizar = req.body;
-    Tarjeta.findByIdAndUpdate(req.params.id, {$set: tarjetaAActualizar})
+    const tarjetaAActualizar = req.query.tarjeta;
+    Tarjeta.findByIdAndUpdate(tarjetaAActualizar._id, {$set: tarjetaAActualizar})
         .then(tarjeta => {
             console.log('Tarjeta actualizada: ', tarjeta)
             res.status(200).json(tarjeta)
@@ -82,9 +82,9 @@ async function borrarTarjeta(req,res) {
 
 
 async function getTarjetasPorUsuario(req, res) {
-    const userId = req.params.userId; // Assumes you pass the user ID as a parameter
-
-    Tarjeta.find({ id_usuario: userId })
+    const userId = req.body.user; // Assumes you pass the user ID as a parameter
+    console.log("userId: ", userId);
+    Tarjeta.find({ id_usuario: {$eq: userId} })
         .then(tarjetas => {
             console.log('Tarjetas del usuario encontradas: ', tarjetas);
             res.status(200).json(tarjetas);
@@ -92,8 +92,10 @@ async function getTarjetasPorUsuario(req, res) {
         .catch(err => {
             console.error('Error al recuperar las tarjetas del usuario: ', err);
             res.status(400).json(err);
-        });
-}
+        }); 
+    // console.log("Funciona!");
+    // res.status(200).send("Hola");
+} 
 
 
 // New function to get all tarjetas
@@ -124,6 +126,7 @@ async function generarTarjetaParaUsuario(req, res) {
             res.status(400).json(err)
         });
 }
+
 
 
 module.exports = {

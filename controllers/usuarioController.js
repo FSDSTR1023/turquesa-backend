@@ -46,13 +46,12 @@ async function login(req,res) {
                             res.status(401).send({ error: err.message });
                         } else {
                             console.log("Llega a la cookie");
-                            res
-                                .cookie("tokenTurquesa", token, {
-                                    httpOnly: true,
-                                    secure: false,
-                                    expires: "Fri, 31 Dec 9999 21:10:10 GMT",
-                                })
-                                .status(201);
+                            // res
+                            //     .cookie("tokenTurquesa", token, {
+                            //         httpOnly: true,
+                            //         secure: false,
+                            //         expires: "Fri, 31 Dec 9999 21:10:10 GMT",
+                            //     })
                             console.log("Pasa la cookie");
                         //res.status(201).send({ token });
                         }
