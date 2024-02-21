@@ -52,7 +52,6 @@ async function login(req,res) {
                             //         secure: false,
                             //         expires: "Fri, 31 Dec 9999 21:10:10 GMT",
                             //     })
-                                // .status(201);
                             console.log("Pasa la cookie");
                         //res.status(201).send({ token });
                         }

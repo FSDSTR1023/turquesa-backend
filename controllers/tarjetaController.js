@@ -84,7 +84,7 @@ async function borrarTarjeta(req,res) {
 async function getTarjetasPorUsuario(req, res) {
     const userId = req.body.user; // Assumes you pass the user ID as a parameter
     console.log("userId: ", userId);
-    Tarjeta.findOne({ id_usuario: {$eq: userId} })
+    Tarjeta.find({ id_usuario: {$eq: userId} })
         .then(tarjetas => {
             console.log('Tarjetas del usuario encontradas: ', tarjetas);
             res.status(200).json(tarjetas);
@@ -92,7 +92,7 @@ async function getTarjetasPorUsuario(req, res) {
         .catch(err => {
             console.error('Error al recuperar las tarjetas del usuario: ', err);
             res.status(400).json(err);
-        });
+        }); 
     // console.log("Funciona!");
     // res.status(200).send("Hola");
 } 
