@@ -5,7 +5,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/usuario.js');
 var tarjetasRouter = require('./routes/tarjeta.js');
 var asistentesRouter = require('./routes/asistente'); // Ensure the path is correct
-
+var mailRouter = require("./mail/mail-routes.js")
 
 const app = express();
 const port = 3000;
@@ -17,10 +17,11 @@ app.use(cors({
 
 require('dotenv').config();
 app.use(express.json());
-app.use('/', indexRouter);
+app.use('/health', indexRouter);
 app.use('/users', usersRouter);
 app.use('/tarjeta', tarjetasRouter);
 app.use('/asistentes', asistentesRouter);
+app.use('/mail',mailRouter)
 
 
 const mongoose = require("mongoose");
