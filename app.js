@@ -5,7 +5,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/usuario.js');
 var tarjetasRouter = require('./routes/tarjeta.js');
 var asistentesRouter = require('./routes/asistente'); // Ensure the path is correct
-var mailRouter = require("./mail/mail-routes.js")
+var mailRouter = require("./routes/mail.js")
+
 
 const app = express();
 const port = 3000;
@@ -21,7 +22,7 @@ app.use('/health', indexRouter);
 app.use('/users', usersRouter);
 app.use('/tarjeta', tarjetasRouter);
 app.use('/asistentes', asistentesRouter);
-app.use('/mail',mailRouter)
+app.use('/send-mail',mailRouter)
 
 
 const mongoose = require("mongoose");
