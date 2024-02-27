@@ -8,7 +8,7 @@ var SibApiV3Sdk = require('sib-api-v3-sdk');
 var defaultClient = SibApiV3Sdk.ApiClient.instance;
 
 var apiKey = defaultClient.authentications['api-key'];
-apiKey.apiKey = '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';
+apiKey.apiKey = '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'; 
 var apiInstance = new SibApiV3Sdk.EmailCampaignsApi();
 var emailCampaigns = new SibApiV3Sdk.CreateEmailCampaign();
 
