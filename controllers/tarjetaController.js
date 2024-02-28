@@ -28,7 +28,7 @@ async function getTarjetasMuestra(req,res) {
 }
 
 async function getTarjeta(req,res) {
-    Tarjeta.find(req.params.id)
+    Tarjeta.findById(req.params.id)
         .then(tarjeta => {
             console.log('Tarjeta encontrada: ', tarjeta)
             res.status(200).json(tarjeta)
