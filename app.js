@@ -1,7 +1,14 @@
 const express = require('express');
-var path = require('path');
+const cors = require('cors');
+const createError = require('http-errors'); 
 
 require('dotenv').config();
+
+
+var path = require('path');
+
+
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/usuario.js');
 var tarjetasRouter = require('./routes/tarjeta.js');
@@ -10,10 +17,10 @@ var mailRouter = require("./mail/mail-routes");
 
 
 const app = express();
-const port = 3000;
-const cors = require('cors');
+const port = process.env.PORT || 3000; // Use environment variable for port
+
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'https://cloudinvito.netlify.app',
   credentials: true,
 }));
 
@@ -33,6 +40,7 @@ async function main() {
 }
 main().catch(err => {console.log(mongoDB); console.log(err)});
 
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -49,7 +57,7 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`App listening on port ${port}`)
 });
 
 module.exports = app;
