@@ -1,11 +1,12 @@
 const express = require('express');
 var path = require('path');
 
+require('dotenv').config();
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/usuario.js');
 var tarjetasRouter = require('./routes/tarjeta.js');
-var asistentesRouter = require('./routes/asistente'); // Ensure the path is correct
-var mailRouter = require("./routes/mail.js")
+var asistentesRouter = require('./routes/asistente'); 
+var mailRouter = require("./mail/mail-routes");
 
 
 const app = express();
@@ -16,13 +17,13 @@ app.use(cors({
   credentials: true,
 }));
 
-require('dotenv').config();
+
 app.use(express.json());
 app.use('/health', indexRouter);
 app.use('/users', usersRouter);
 app.use('/tarjeta', tarjetasRouter);
 app.use('/asistentes', asistentesRouter);
-app.use('/send-mail',mailRouter)
+app.use("/mail", mailRouter);
 
 
 const mongoose = require("mongoose");
