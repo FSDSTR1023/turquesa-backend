@@ -5,6 +5,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/usuario.js');
 var tarjetasRouter = require('./routes/tarjeta.js');
 var asistentesRouter = require('./routes/asistente'); // Ensure the path is correct
+var cookieParser =  require("cookie-parser");
 
 
 const app = express();
@@ -14,6 +15,7 @@ app.use(cors({
   origin: 'http://localhost:5173',
   credentials: true,
 }));
+app.use(cookieParser());
 
 require('dotenv').config();
 app.use(express.json());
