@@ -8,6 +8,8 @@ const asistenteController = require('../controllers/asistenteController');
 // Route to get all asistentes
 router.get('/', asistenteController.getAsistentes);
 
+router.get('/one', asistenteController.getAsistente);
+
 // Route to create a new asistente
 router.post('/create', asistenteController.crearAsistente);
 

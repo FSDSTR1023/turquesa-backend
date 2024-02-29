@@ -1,0 +1,19 @@
+POST http://localhost:3000/mail HTTP/1.1
+Content-Type: application/json
+
+{
+    "to": "mmarinucci@numinate.com",
+    "subject": "Hola Caracola"
+}
+
+
+### email With template
+
+POST http://localhost:3000/mail/template HTTP/1.1
+content-type: application/json
+
+{
+    "to": "mmarinucci@numinate.com",
+    "subject": "Prueba de email"
+    // "until": "Hasta nunca desde el front"
+}
