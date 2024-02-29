@@ -1,8 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 const authMiddleware = async (req, res, next) => {
-  console.log("Cookies", req.cookies);
-  const token = req.cookies.tokenTurquesa;
+  const token = req.cookies.token;
   if (!token) {
     res.status(401).send({ error: "No token provided" });
     return;
@@ -15,7 +14,6 @@ const authMiddleware = async (req, res, next) => {
       return;
     }
     req.user = data;
-    console.log("Aqui User: ", req.user);
     next();
   } catch (err) {
     res.status(401).send({ error: err.message });
