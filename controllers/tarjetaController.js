@@ -127,6 +127,20 @@ async function generarTarjetaParaUsuario(req, res) {
         });
 }
 
+async function updateTarjetaById(req,res) {
+    const tarjetaAActualizar = req.params.id;
+    const tarjeta = req.body;
+    Tarjeta.findByIdAndUpdate(tarjetaAActualizar, {$set: tarjeta})
+        .then(tarjeta => {
+            console.log('Tarjeta actualizada: ', tarjeta)
+            res.status(200).json(tarjeta)
+        })
+        .catch(err => {
+            console.log('Error al actualizar la tarjeta: ', err)
+            res.status(400).json(err)
+        });
+}
+
 
 
 module.exports = {
@@ -138,5 +152,6 @@ module.exports = {
     borrarTarjeta,
     getTarjetasPorUsuario, 
     getAllTarjetas, 
-    generarTarjetaParaUsuario
+    generarTarjetaParaUsuario,
+    updateTarjetaById
 };
