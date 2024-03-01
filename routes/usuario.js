@@ -12,6 +12,6 @@ router.get('/login', controladorUsuarios.login);
 
 router.post('/logout', controladorUsuarios.logout);
 
-router.post('/userAuth', authMiddleware, controladorUsuarios.checkUserSaved);
+router.get('/userAuth', controladorUsuarios.checkUserSaved);
 
 module.exports = router;

@@ -16,8 +16,8 @@ async function getAsistentes(req,res) {
 
 
 async function updateAsistente(req,res) {
-    const asistenteAActualizar = req.query.nuevoAsistente;;
-    Asistente.findByIdAndUpdate(asistenteAActualizar.id, {$set: asistenteAActualizar})
+    const asistenteAActualizar = req.body;
+    Asistente.findByIdAndUpdate(req.params.id, {$set: asistenteAActualizar})
         .then(asistente => {
             console.log('Asistente actualizado: ', asistente)
             res.status(200).json(asistente)
@@ -53,23 +53,9 @@ async function borrarAsistente(req,res) {
         });
 }
 
-async function getAsistente(req, res) {
-    const asistente= req.query.id;
-    Asistente.findById(asistente)
-        .then(asistente => { // Changed to 'asistentes' for clarity and to match the variable used below
-            console.log('Asistente encontrado: ', asistente);
-            res.status(200).json(asistente); 
-        })
-        .catch(err => {
-            console.log('Error al recuperar el asistente: ', err);
-            res.status(400).json(err);
-        });
-}
-
 module.exports = {
     getAsistentes,
     updateAsistente,
     crearAsistente,
-    borrarAsistente,
-    getAsistente
+    borrarAsistente
 }
