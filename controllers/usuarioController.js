@@ -46,26 +46,28 @@ async function login(req,res) {
                             res.status(401).send({ error: err.message });
                         } else {
                             console.log("Llega a la cookie");
-                            // res
-                            //     .cookie("tokenTurquesa", token, {
-                            //         httpOnly: true,
-                            //         secure: false,
-                            //         expires: "Fri, 31 Dec 9999 21:10:10 GMT",
-                            //     })
+                            try {
+                            res
+                                .cookie("tokenTurquesa", token, {
+                                    httpOnly: true,
+                                    secure: false,
+                                    expires: new Date("2100-12-17T03:24:00"),
+                                })
+                                .json(usuario);
+                            } catch (error)  {
+                                console.error(error);
+                            }
                             console.log("Pasa la cookie");
                         //res.status(201).send({ token });
                         }
                     }
                 );
-                res.status(200).json(usuario);
             }
         })
         .catch(err => {
             console.log('Error al recuperar el usuario: ', err)
             res.status(400).json(err)
         });
-
-    
 }
 
 async function register(req, res) {
@@ -83,7 +85,11 @@ async function register(req, res) {
 }
 
 async function logout(_req,res) {
-    res.clearCookie("tokenTurquesa").send();
+    try {
+        res.clearCookie("tokenTurquesa").send();
+    } catch (error)  {
+        console.error(error);
+    }
 }
 
 async function borrarUsuario(req,res) {
@@ -100,21 +106,9 @@ async function borrarUsuario(req,res) {
 
 
 async function checkUserSaved(req, res) {
-    const usuarioRecuperado = Usuario.findOne({
-        id: {$eq: req.user.id}
-    })
-        .then(usuario => {
-            if (!usuario) {
-                res.status(203).json("No se ha encontrado al usuario");
-            } else {
-                console.log('Usuario encontrado: ', usuario);
-                res.status(201).send();
-            }
-        })
-        .catch(err => {
-            console.log('Error al recuperar el usuario: ', err)
-            res.status(400).json(err)
-        });
+    console.log("usuario id", req.user.id);
+    const usuarioRecuperado = await Usuario.findById(req.user.id)
+    console.log("usuarioRecuperado", usuarioRecuperado);
     res.json({ usuarioRecuperado, password: undefined });
 }
 
