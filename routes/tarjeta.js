@@ -18,7 +18,7 @@ router.post('/usuario/crear', controladorTarjetas.generarTarjetaParaUsuario);
 
 // // ID-specific routes
 router.get('/:id', controladorTarjetas.getTarjeta);
-router.put('/:id', controladorTarjetas.updateTarjeta);
+router.put('/:id', controladorTarjetas.updateTarjetaById);
 // router.delete('/:id', controladorTarjetas.borrarTarjeta);
 
 module.exports = router;

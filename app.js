@@ -14,6 +14,7 @@ var usersRouter = require('./routes/usuario.js');
 var tarjetasRouter = require('./routes/tarjeta.js');
 var asistentesRouter = require('./routes/asistente'); 
 var mailRouter = require("./mail/mail-routes");
+var cookieParser =  require("cookie-parser");
 
 
 const app = express();
@@ -31,6 +32,7 @@ app.use('/users', usersRouter);
 app.use('/tarjeta', tarjetasRouter);
 app.use('/asistentes', asistentesRouter);
 app.use("/mail", mailRouter);
+app.use(cookieParser());
 
 
 const mongoose = require("mongoose");
