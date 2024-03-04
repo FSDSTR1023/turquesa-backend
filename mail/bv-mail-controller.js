@@ -14,7 +14,7 @@ class MailController {
     const msg = {
       subject: req.body.subject,
       htmlContent: "<h1>Hola, mundo</h1>",
-      sender: { name: "John", email: "example@example.com" },
+      sender: { name: "Invito", email: "info@invito.com" },
       to: [{ email: req.body.to, name: "Massi" }],
     };
     this.sendSmtpEmail = msg;
@@ -32,8 +32,8 @@ class MailController {
 
   async sendEmailWithTemplate(req, res) {
     const msg = {
-      sender: { name: "John", email: "example@example.com" },
-      to: [{ email: req.body.to, name: "Rubén" }],
+      sender: { name: "Invito", email: "info@invito.com" },
+      to: [{ email: req.body.to, name: "Massi" }],
       subject: req.body.subject,
       templateId: 1,
       params: {
