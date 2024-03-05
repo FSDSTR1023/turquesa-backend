@@ -3,8 +3,6 @@ const cors = require('cors');
 const createError = require('http-errors'); 
 
 require('dotenv').config();
-
-
 var path = require('path');
 
 
