@@ -1,12 +1,6 @@
 const express = require('express');
-const cors = require('cors');
-const createError = require('http-errors'); 
-
-require('dotenv').config();
-
-
+//const createError = require('http-errors'); 
 var path = require('path');
-
 
 
 var indexRouter = require('./routes/index');
@@ -14,16 +8,19 @@ var usersRouter = require('./routes/usuario.js');
 var tarjetasRouter = require('./routes/tarjeta.js');
 var asistentesRouter = require('./routes/asistente'); 
 var mailRouter = require("./mail/mail-routes");
-var cookieParser =  require("cookie-parser");
+
 
 
 const app = express();
 const port = process.env.PORT || 3000; // Use environment variable for port
-
+const cors = require('cors');
 app.use(cors({
   origin: 'https://cloudinvito.netlify.app',
   credentials: true,
 }));
+
+require('dotenv').config();
+var cookieParser =  require("cookie-parser");
 
 
 app.use(express.json());
