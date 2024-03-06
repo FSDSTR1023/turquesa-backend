@@ -54,7 +54,8 @@ async function login(req,res) {
                                     expires: new Date("2100-12-17T03:24:00"),
                                     sameSite:"none"
                                 })
-                                .json(usuario);
+                                .json(usuario)
+                                .status(200)
                             } catch (error)  {
                                 console.error(error);
                             }
@@ -110,7 +111,7 @@ async function checkUserSaved(req, res) {
     console.log("usuario id", req.user.id);
     const usuarioRecuperado = await Usuario.findById(req.user.id)
     console.log("usuarioRecuperado", usuarioRecuperado);
-    res.json({ usuarioRecuperado, password: undefined });
+    res.status(200).json({ usuarioRecuperado, password: undefined });
 }
 
 

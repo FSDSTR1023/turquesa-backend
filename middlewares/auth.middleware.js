@@ -1,17 +1,16 @@
 const jwt = require("jsonwebtoken");
 
 const authMiddleware = async (req, res, next) => {
-  const token = req.cookies.token;
+  const {token} = req.cookies;
+  console.log(token, '********Token')
   if (!token) {
-    res.status(401).send({ error: "No token provided" });
-    return;
+    return res.status(401).send({ error: "No token provided" });
   }
 
   try {
     const data = await jwt.verify(token, process.env.JWT_SECRET);
     if (!data) {
-      res.status(500);
-      return;
+      return res.status(500);
     }
     req.user = data;
     next();
