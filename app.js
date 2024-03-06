@@ -1,22 +1,17 @@
 require('dotenv').config();
-
 const express = require('express');
-const cors = require('cors');
-const path = require('path');
-const cookieParser =  require("cookie-parser");
-//const createError = require('http-errors'); 
+var path = require('path');
 
-
-
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/usuario.js');
-const tarjetasRouter = require('./routes/tarjeta.js');
-const asistentesRouter = require('./routes/asistente'); 
-const mailRouter = require("./mail/mail-routes");
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/usuario.js');
+var tarjetasRouter = require('./routes/tarjeta.js');
+var asistentesRouter = require('./routes/asistente'); // Ensure the path is correct
+var cookieParser =  require("cookie-parser");
 
 
 const app = express();
-const port = process.env.PORT || 3000; // Use environment variable for port
+const port = 3000;
+const cors = require('cors');
 
 app.use(cors({
   origin: 'https://cloudinvito.netlify.app',
@@ -27,12 +22,9 @@ app.use(cors({
 
 app.use(cookieParser());
 app.use(express.json());
-app.use('/health', indexRouter);
 app.use('/users', usersRouter);
 app.use('/tarjeta', tarjetasRouter);
 app.use('/asistentes', asistentesRouter);
-app.use("/mail", mailRouter);
-
 
 
 const mongoose = require("mongoose");
@@ -41,7 +33,6 @@ async function main() {
   await mongoose.connect(mongoDB);
 }
 main().catch(err => {console.log(mongoDB); console.log(err)});
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
