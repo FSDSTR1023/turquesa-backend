@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const cookieParser =  require("cookie-parser");
 //const createError = require('http-errors'); 
 
 
@@ -23,7 +24,6 @@ app.use(cors({
 }));
 
 
-var cookieParser =  require("cookie-parser");
 
 app.use(cookieParser());
 app.use(express.json());
