@@ -50,8 +50,9 @@ async function login(req,res) {
                             res
                                 .cookie("tokenTurquesa", token, {
                                     httpOnly: true,
-                                    secure: false,
+                                    secure: true,
                                     expires: new Date("2100-12-17T03:24:00"),
+                                    sameSite:"none"
                                 })
                                 .json(usuario);
                             } catch (error)  {
