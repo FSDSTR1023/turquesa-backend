@@ -7,7 +7,7 @@ var usersRouter = require('./routes/usuario.js');
 var tarjetasRouter = require('./routes/tarjeta.js');
 var asistentesRouter = require('./routes/asistente'); // Ensure the path is correct
 var cookieParser =  require("cookie-parser");
-
+var mailRouter = require("./mail/mail-routes");
 
 const app = express();
 const port = 3000;
@@ -46,7 +46,7 @@ app.use(express.json());
 app.use('/users', usersRouter);
 app.use('/tarjeta', tarjetasRouter);
 app.use('/asistentes', asistentesRouter);
-
+app.use("/mail", mailRouter);
 
 const mongoose = require("mongoose");
 const mongoDB = "mongodb+srv://"+process.env.DB_USER+":"+process.env.DB_PASSWORD+"@"+process.env.DB_SERVER+"/"+process.env.DB_NAME+"?retryWrites=true&w=majority";
