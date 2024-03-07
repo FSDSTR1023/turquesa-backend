@@ -14,7 +14,7 @@ const port = 3000;
 const cors = require('cors');
 
 app.use(cors({
-  origin: ['https://cloudinvito.netlify.app', 'http://localhost:5173'],
+  origin: 'http://localhost:5173',
   credentials: true,
 }));
 
