@@ -58,6 +58,7 @@ async function login(req,res) {
                                 .status(200)
                             } catch (error)  {
                                 console.error(error);
+                                res.status(500).send('Algo fue mal')
                             }
                             console.log("Pasa la cookie");
                         //res.status(201).send({ token });
