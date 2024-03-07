@@ -16,7 +16,7 @@ async function getAsistentes(req,res) {
 
 
 async function updateAsistente(req,res) {
-    const asistenteAActualizar = req.query.nuevoAsistente;;
+    const asistenteAActualizar = req.query.nuevoAsistente;
     Asistente.findByIdAndUpdate(asistenteAActualizar._id, {$set: asistenteAActualizar})
         .then(asistente => {
             console.log('Asistente actualizado: ', asistente)
