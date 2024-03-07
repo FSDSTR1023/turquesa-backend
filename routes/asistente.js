@@ -14,7 +14,7 @@ router.get('/one', asistenteController.getAsistente);
 router.post('/create', asistenteController.crearAsistente);
 
 // Route to update an asistente by ID
-router.put('/update/:id', asistenteController.updateAsistente);
+router.put('/', asistenteController.updateAsistente);
 
 // Route to delete an asistente by ID
 router.delete('/delete/:id', asistenteController.borrarAsistente);
