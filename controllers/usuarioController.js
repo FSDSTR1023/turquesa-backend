@@ -112,7 +112,7 @@ async function checkUserSaved(req, res) {
     console.log("usuario id", req.user.id);
     const usuarioRecuperado = await Usuario.findById(req.user.id)
     console.log("usuarioRecuperado", usuarioRecuperado);
-    res.status(200).json({ usuarioRecuperado, password: undefined });
+    res.json({ usuarioRecuperado, password: undefined });
 }
 
 
