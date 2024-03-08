@@ -10,7 +10,8 @@ const tarjeta = new Schema({
     nombre: String,
     categoria: String, 
     imagen_principal: String, // Direccion de la imagen
-    datos_personalizados: Object
+    datos_personalizados: Object,
+    imagenes: Object
 });
 
 module.exports = mongoose.model("Tarjeta", tarjeta);
