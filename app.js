@@ -14,14 +14,14 @@ const port = process.env.PORT || 3000
 const cors = require('cors');
 
 app.use(cors({
-  origin:'https://cloudinvito.netlify.app/',
+  origin:'https://cloudinvito.netlify.app',
   credentials: true,
 }));
 
 app.use((req, res, next) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://cloudinvito.netlify.app/"
+    "https://cloudinvito.netlify.app"
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
